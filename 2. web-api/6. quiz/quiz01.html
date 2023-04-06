@@ -15,28 +15,46 @@
     <input type="checkbox" value="3"> 조항3
     <input type="checkbox" value="4"> 조항4
 
+    <!-- 1. 다음 체크박스 버튼을 클릭했을 때 '동의했습니다!' 경고창을 띄우고
+         value값을 같이 찍어 주세요.(checked -> 체크 했는지의 여부) -->
+    <script>
+
+        const $check = document.querySelectorAll('input[type="checkbox"]');
+        // console.log($check);
+        for(let $c of [...$check]) {
+            $c.addEventListener('change', e => {
+                if(e.target.checked) {
+                    alert(`${e.target.value}번 항목에 동의하셨습니다.`);
+                }
+            });
+        }
+
+    </script>
+
     <br>
+
+    <!-- 2. 확인 버튼을 클릭했을 때 input 태그의 공백 여부, 체크 여부를 확인하세요. -->
 
     ID: <input type="text" id="id">
     기억하기 <input type="checkbox" id="remember">
     <button id="check2">확인</button>
 
-    <!-- 1. 다음 체크박스 버튼을 클릭했을 때 '동의했습니다!' 경고창을 띄우고
-         value값을 같이 찍어 주세요.(checked -> 체크 했는지의 여부) -->
-
-    <!-- 2. 확인 버튼을 클릭했을 때 input 태그의 공백 여부, 체크 여부를 확인하세요. -->
-
-
     <script>
-        const $box = document.querySelectorAll('input[type="checkbox"]');
 
-        for (let i = 0; i < 4; i++) {
-            $box[i].addEventListener('click', e => {
-                confirm('정말 동의하십니까? ' + $box[i].getAttribute('value'));
-                
-                
-            });
+        const $result = document.getElementById('id');
+        const $remember = document.getElementById('remember');
+
+        document.getElementById('check2').onclick = function(e) {
+            console.log('value값: ' + $result.value);
+            console.log('check값: ' + $remember.checked);
+
+            if($result.value === '') {
+                alert('아이디는 필수값입니다.');
+            } else if(!$remember.checked) {
+                alert('기억하기를 체크하세요');
+            }
         }
+
     </script>
 
 </body>
