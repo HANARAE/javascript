@@ -64,7 +64,7 @@
         }
 
         textarea {
-            width: 258px;
+            width: 97%;
             height: 250px;
             resize: none;
         }
@@ -166,6 +166,7 @@
                 $btn3.textContent = '사진 모드';
                 $inner.removeChild($inner.lastElementChild);
                 const $text = document.createElement('textarea');
+                $text.className = 'memo';
                 const $addbtn = document.createElement('button');
                 $addbtn.textContent = '등록하기';
                 $inner.appendChild($text);
